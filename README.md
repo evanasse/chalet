@@ -20,7 +20,6 @@ Chalet - A warm colorscheme
 </br>
 
 # Colors
-----
 |Color|Name|ANSI|Hex|
 |:------------------------------------------------------:|:-----------|:-------------|:-------:|
 |![#2E201E](https://placehold.co/16x16/2E201E/2E201E.png)|Black       |Black         |`#2E201E`|
@@ -42,8 +41,7 @@ Chalet - A warm colorscheme
 |![#1E140D](https://placehold.co/16x16/1E140D/1E140D.png)|Background  |-             |`#1E140D`|
 
 # App configs
-----
-## Delta (git-delta)
+## [Delta (git-delta)](https://github.com/dandavison/delta)
 ```ini
 [delta]
     syntax-theme = none
@@ -60,11 +58,51 @@ Chalet - A warm colorscheme
     line-numbers-zero-style = "#5C403B"
 ```
 
-## Neovim
+## [Neovim](https://neovim.io/)
+With [Lazy.nvim](https://github.com/folke/lazy.nvim):
+```lua
+{
+    "evanasse/chalet",
+    dependencies = { "rktjmp/lush.nvim" },
+}
+```
 
-## WezTerm
+## [WezTerm](https://wezfurlong.org/wezterm/)
+In `wezterm.lua`:
+> You'll have to make `lua/chalet_colors/init.lua` available for the Lua runtime of Wezterm.
+```lua
+-- Colors
+local colors = require("chalet_colors")
+
+config.color_scheme = "chalet"
+config.color_schemes = {
+    ["chalet"] = {
+        background = colors.bg,
+        foreground = colors.fg,
+        brights = {
+            colors.ansi.bright_black,
+            colors.ansi.bright_red,
+            colors.ansi.bright_green,
+            colors.ansi.bright_yellow,
+            colors.ansi.bright_blue,
+            colors.ansi.bright_magenta,
+            colors.ansi.bright_cyan,
+            colors.ansi.bright_white,
+        },
+        ansi = {
+            colors.ansi.black,
+            colors.ansi.red,
+            colors.ansi.green,
+            colors.ansi.yellow,
+            colors.ansi.blue,
+            colors.ansi.magenta,
+            colors.ansi.cyan,
+            colors.ansi.white,
+        },
+    },
+}
+```
 
 # Acknowledgement
-----
 * This colorscheme was built with [Lush](http://git.io/lush.nvim).
 * This colorscheme's inspiration came from the [Farout colorscheme](https://github.com/fcpg/vim-farout).
