@@ -42,7 +42,7 @@ local theme = lush(function(injected_functions)
     CursorIM { Cursor },                                                  -- Like Cursor, but used when in IME mode |CursorIM|
     CursorColumn { bg = colors.black },                                   -- Screen-column at the cursor, when 'cursorcolumn' is set.
     CursorLine { bg = colors.black },                                     -- Screen-line at the cursor, when 'cursorline' is set. Low-priority if foreground (ctermfg OR guifg) is not set.
-    Directory { fg = colors.dark_orange },                                -- Directory names (and other special names in listings)
+    Directory { fg = colors.dark_brown },                                 -- Directory names (and other special names in listings)
     DiffAdd { bg = colors.dark_green, fg = colors.white, gui = "bold" },  -- Diff mode: Added line |diff.txt|
     DiffChange { bg = colors.darker_brown, fg = colors.white },           -- Diff mode: Changed line |diff.txt|
     DiffDelete { bg = colors.dark_red, fg = colors.white, gui = "bold" }, -- Diff mode: Deleted line |diff.txt|
@@ -72,7 +72,7 @@ local theme = lush(function(injected_functions)
     Normal { fg = colors.white, bg = colors.bg },                          -- Normal text
     NormalFloat { Normal },                                                -- Normal text in floating windows.
     FloatBorder { Normal },                                                -- Border of floating windows.
-    FloatTitle { Normal, gui = "bold,underline" },                         -- Title of floating windows.
+    FloatTitle { Normal, gui = "bold" },                                   -- Title of floating windows.
     -- NormalNC       { }, -- normal text in non-current windows
     Pmenu { bg = colors.bg, fg = colors.light_brown },                     -- Popup menu: Normal item.
     PmenuSel { bg = colors.black, fg = colors.light_brown, gui = "bold" }, -- Popup menu: Selected item.
@@ -264,6 +264,8 @@ local theme = lush(function(injected_functions)
     -- Plugin specific highlight groups
     -- Telescope
     TelescopeSelection { bg = colors.black, fg = colors.white, gui = "bold" },
+    TelescopePreviewBorder { Normal },
+    TelescopePromptBorder { Normal },
     -- DevIcon
     DevIconDefault { fg = colors.light_brown },
     -- Mason
