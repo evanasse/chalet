@@ -1,6 +1,6 @@
 local colors = {}
 
-colors.bg = "#070504"
+colors.bg = "#1E140D"
 colors.fg = "#F2DDBC"
 
 -- ANSI black

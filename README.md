@@ -38,7 +38,7 @@ Chalet - A warm colorscheme
 |![#AA6B73](https://placehold.co/16x16/AA6B73/AA6B73.png)|Light purple|Light magenta|`#AA6B73`|
 |![#C69478](https://placehold.co/16x16/C69478/C69478.png)|Light brown |Light cyan   |`#C69478`|
 |![#F2DDBC](https://placehold.co/16x16/F2DDBC/F2DDBC.png)|White       |Light white  |`#F2DDBC`|
-|![#070504](https://placehold.co/16x16/070504/070504.png)|Background  |-            |`#070504`|
+|![#1E140D](https://placehold.co/16x16/1E140D/1E140D.png)|Background  |-            |`#1E140D`|
 
 # Acknowledgement
 * This colorscheme was built with [Lush](http://git.io/lush.nvim).
