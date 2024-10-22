@@ -13,64 +13,7 @@
 --  "Y8P"  "Y888888P'"Y88P"`Y8P' "YY8P8P88P     `Y8
 --
 
---
--- Note: Because this is a lua file, vim will append it to the runtime,
---       which means you can require(...) it in other lua code (this is useful),
---       but you should also take care not to conflict with other libraries.
---
---       (This is a lua quirk, as it has somewhat poor support for namespacing.)
---
---       Basically, name your file,
---
---       "super_theme/lua/lush_theme/super_theme_dark.lua",
---
---       not,
---
---       "super_theme/lua/dark.lua".
---
---       With that caveat out of the way...
---
-
--- Enable lush.ify on this file, run:
---
---  `:Lushify`
---
---  or
---
---  `:lua require('lush').ify()`
--- package.path = './?.lua;' .. package.path
-
--- TODO fix to import colors from Lua module
--- local colors = require("chalet_colors")
-local colors = {}
-
-colors.bg = "#1E140D"
-colors.fg = "#F2DDBC"
-
--- ANSI black
-colors.darker_brown = "#5C403B"
-colors.black = "#2e201e"
--- ANSI red
-colors.light_red = "#DF674C"
-colors.dark_red = "#A74D39"
--- ANSI green
-colors.light_green = "#8E947D"
-colors.dark_green = "#616655"
--- ANSI yellow
-colors.light_yellow = "#FFC786"
-colors.dark_yellow = "#F2A766"
--- ANSI blue
-colors.light_orange = "#F49D69"
-colors.dark_orange = "#D47D49"
--- ANSI magenta
-colors.light_purple = "#AA6B73"
-colors.dark_purple = "#8A4B53"
--- ANSI cyan
-colors.light_brown = "#C69478"
-colors.dark_brown = "#A67458"
--- ANSI white
-colors.white = "#F2DDBC"
-colors.light_blue = "#A6B3BF"
+local colors = require("chalet_colors")
 
 local lush = require('lush')
 local hsl = lush.hsl
@@ -91,32 +34,32 @@ local theme = lush(function(injected_functions)
     --
     -- See :h highlight-groups
     --
-    -- ColorColumn    { }, -- Columns set with 'colorcolumn'
-    Conceal { fg = colors.black },                             -- Placeholder characters substituted for concealed text (see 'conceallevel')
-    Cursor { gui = "inverse" },                                -- Character under the cursor
-    CurSearch { bg = colors.light_purple, fg = colors.black }, -- Highlighting a search pattern under the cursor (see 'hlsearch')
-    lCursor { Cursor },                                        -- Character under the cursor when |language-mapping| is used (see 'guicursor')
-    CursorIM { Cursor },                                       -- Like Cursor, but used when in IME mode |CursorIM|
-    -- CursorColumn   { }, -- Screen-column at the cursor, when 'cursorcolumn' is set.
-    -- CursorLine     { }, -- Screen-line at the cursor, when 'cursorline' is set. Low-priority if foreground (ctermfg OR guifg) is not set.
-    Directory { fg = colors.dark_orange }, -- Directory names (and other special names in listings)
-    -- DiffAdd        { }, -- Diff mode: Added line |diff.txt|
-    -- DiffChange     { }, -- Diff mode: Changed line |diff.txt|
-    -- DiffDelete     { }, -- Diff mode: Deleted line |diff.txt|
-    -- DiffText       { }, -- Diff mode: Changed text within a changed line |diff.txt|
-    EndOfBuffer { fg = colors.darker_brown }, -- Filler lines (~) after the end of the buffer. By default, this is highlighted like |hl-NonText|.
+    ColorColumn { bg = colors.darker_brown },                             -- Columns set with 'colorcolumn'
+    Conceal { fg = colors.black },                                        -- Placeholder characters substituted for concealed text (see 'conceallevel')
+    Cursor { gui = "inverse" },                                           -- Character under the cursor
+    CurSearch { bg = colors.light_orange, fg = colors.black },            -- Highlighting a search pattern under the cursor (see 'hlsearch')
+    lCursor { Cursor },                                                   -- Character under the cursor when |language-mapping| is used (see 'guicursor')
+    CursorIM { Cursor },                                                  -- Like Cursor, but used when in IME mode |CursorIM|
+    CursorColumn { bg = colors.black },                                   -- Screen-column at the cursor, when 'cursorcolumn' is set.
+    CursorLine { bg = colors.black },                                     -- Screen-line at the cursor, when 'cursorline' is set. Low-priority if foreground (ctermfg OR guifg) is not set.
+    Directory { fg = colors.dark_orange },                                -- Directory names (and other special names in listings)
+    DiffAdd { bg = colors.dark_green, fg = colors.white, gui = "bold" },  -- Diff mode: Added line |diff.txt|
+    DiffChange { bg = colors.darker_brown, fg = colors.white },           -- Diff mode: Changed line |diff.txt|
+    DiffDelete { bg = colors.dark_red, fg = colors.white, gui = "bold" }, -- Diff mode: Deleted line |diff.txt|
+    DiffText { bg = colors.dark_purple, fg = colors.white },              -- Diff mode: Changed text within a changed line |diff.txt|
+    EndOfBuffer { fg = colors.darker_brown },                             -- Filler lines (~) after the end of the buffer. By default, this is highlighted like |hl-NonText|.
     -- TermCursor     { }, -- Cursor in a focused terminal
     -- TermCursorNC   { }, -- Cursor in an unfocused terminal
-    ErrorMsg { fg = colors.dark_red }, -- Error messages on the command line
+    ErrorMsg { fg = colors.dark_red },                          -- Error messages on the command line
     -- VertSplit      { }, -- Column separating vertically split windows
-    -- Folded         { }, -- Line used for closed folds
+    Folded { bg = colors.black, fg = colors.dark_orange },      -- Line used for closed folds
     -- FoldColumn     { }, -- 'foldcolumn'
-    SignColumn { fg = colors.darker_brown },                  -- Column where |signs| are displayed
-    IncSearch { bg = colors.dark_yellow, fg = colors.black }, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
-    -- Substitute     { }, -- |:substitute| replacement text highlighting
-    LineNr { fg = colors.dark_red },                          -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
-    LineNrAbove { fg = colors.light_brown },                  -- Line number for when the 'relativenumber' option is set, above the cursor line
-    LineNrBelow { LineNrAbove },                              -- Line number for when the 'relativenumber' option is set, below the cursor line
+    SignColumn { fg = colors.darker_brown },                    -- Column where |signs| are displayed
+    IncSearch { bg = colors.light_purple, fg = colors.white },  -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
+    Substitute { bg = colors.light_purple, fg = colors.white }, -- |:substitute| replacement text highlighting
+    LineNr { fg = colors.dark_red },                            -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
+    LineNrAbove { fg = colors.light_brown },                    -- Line number for when the 'relativenumber' option is set, above the cursor line
+    LineNrBelow { LineNrAbove },                                -- Line number for when the 'relativenumber' option is set, below the cursor line
     -- CursorLineNr   { }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
     -- CursorLineFold { }, -- Like FoldColumn when 'cursorline' is set for the cursor line
     -- CursorLineSign { }, -- Like SignColumn when 'cursorline' is set for the cursor line
@@ -124,25 +67,25 @@ local theme = lush(function(injected_functions)
     ModeMsg { fg = colors.light_brown }, -- 'showmode' message (e.g., "-- INSERT -- ")
     -- MsgArea        { }, -- Area for messages and cmdline
     -- MsgSeparator   { }, -- Separator for scrolled messages, `msgsep` flag of 'display'
-    MoreMsg { fg = colors.light_green },           -- |more-prompt|
-    -- NonText        { }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
-    Normal { fg = colors.white, bg = colors.bg },  -- Normal text
-    NormalFloat { Normal },                        -- Normal text in floating windows.
-    FloatBorder { Normal },                        -- Border of floating windows.
-    FloatTitle { Normal, gui = "bold,underline" }, -- Title of floating windows.
+    MoreMsg { fg = colors.light_green },                                   -- |more-prompt|
+    NonText { fg = colors.darker_brown },                                  -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
+    Normal { fg = colors.white, bg = colors.bg },                          -- Normal text
+    NormalFloat { Normal },                                                -- Normal text in floating windows.
+    FloatBorder { Normal },                                                -- Border of floating windows.
+    FloatTitle { Normal, gui = "bold,underline" },                         -- Title of floating windows.
     -- NormalNC       { }, -- normal text in non-current windows
-    -- Pmenu          { }, -- Popup menu: Normal item.
-    -- PmenuSel       { }, -- Popup menu: Selected item.
-    -- PmenuKind      { }, -- Popup menu: Normal item "kind"
-    -- PmenuKindSel   { }, -- Popup menu: Selected item "kind"
-    -- PmenuExtra     { }, -- Popup menu: Normal item "extra text"
-    -- PmenuExtraSel  { }, -- Popup menu: Selected item "extra text"
-    -- PmenuSbar      { }, -- Popup menu: Scrollbar.
-    -- PmenuThumb     { }, -- Popup menu: Thumb of the scrollbar.
-    Question { MoreMsg },                                  -- |hit-enter| prompt and yes/no questions
-    QuickFixLine { fg = colors.dark_green },               -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
-    Search { bg = colors.dark_purple, fg = colors.white }, -- Last search pattern highlighting (see 'hlsearch'). Also used for similar items that need to stand out.
-    SpecialKey { fg = colors.light_orange },               -- Unprintable characters: text displayed differently from what it really is. But not 'listchars' whitespace. |hl-Whitespace|
+    Pmenu { bg = colors.bg, fg = colors.light_brown },                     -- Popup menu: Normal item.
+    PmenuSel { bg = colors.black, fg = colors.light_brown, gui = "bold" }, -- Popup menu: Selected item.
+    PmenuKind { Pmenu, fg = colors.dark_orange },                          -- Popup menu: Normal item "kind"
+    PmenuKindSel { PmenuSel, fg = colors.dark_orange },                    -- Popup menu: Selected item "kind"
+    PmenuExtra { Pmenu, fg = colors.dark_yellow },                         -- Popup menu: Normal item "extra text"
+    PmenuExtraSel { PmenuSel, fg = colors.dark_yellow },                   -- Popup menu: Selected item "extra text"
+    PmenuSbar { Pmenu },                                                   -- Popup menu: Scrollbar.
+    PmenuThumb { bg = colors.light_brown },                                -- Popup menu: Thumb of the scrollbar.
+    Question { MoreMsg },                                                  -- |hit-enter| prompt and yes/no questions
+    QuickFixLine { fg = colors.dark_green },                               -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
+    Search { bg = colors.dark_purple, fg = colors.white },                 -- Last search pattern highlighting (see 'hlsearch'). Also used for similar items that need to stand out.
+    SpecialKey { fg = colors.light_orange },                               -- Unprintable characters: text displayed differently from what it really is. But not 'listchars' whitespace. |hl-Whitespace|
     -- SpellBad       { }, -- Word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise.
     -- SpellCap       { }, -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
     -- SpellLocal     { }, -- Word that is recognized by the spellchecker as one that is used in another region. |spell| Combined with the highlighting used otherwise.
@@ -211,7 +154,7 @@ local theme = lush(function(injected_functions)
     -- Underlined     { gui = "underline" }, -- Text that stands out, HTML links
     -- Ignore         { }, -- Left blank, hidden |hl-Ignore| (NOTE: May be invisible here in template)
     -- Error          { }, -- Any erroneous construct
-    -- Todo           { }, -- Anything that needs extra attention; mostly the keywords TODO FIXME and XXX
+    Todo { gui = "bold,underline" }, -- Anything that needs extra attention; mostly the keywords TODO FIXME and XXX
 
     -- These groups are for the native LSP client and diagnostic system. Some
     -- other LSP clients may use these groups, or use their own. Consult your
