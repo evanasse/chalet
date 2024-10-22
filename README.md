@@ -22,7 +22,7 @@ Chalet - A warm colorscheme
 # Colors
 ----
 |Color|Name|ANSI|Hex|
-|:------------------------------------------------------:|:----------:|:------------:|:-------:|
+|:------------------------------------------------------:|:-----------|:-------------|:-------:|
 |![#2E201E](https://placehold.co/16x16/2E201E/2E201E.png)|Black       |Black         |`#2E201E`|
 |![#A74D39](https://placehold.co/16x16/A74D39/A74D39.png)|Dark red    |Red           |`#A74D39`|
 |![#616655](https://placehold.co/16x16/616655/616655.png)|Dark green  |Green         |`#616655`|
@@ -30,7 +30,7 @@ Chalet - A warm colorscheme
 |![#D47D49](https://placehold.co/16x16/D47D49/D47D49.png)|Dark orange |Blue          |`#D47D49`|
 |![#8A4B53](https://placehold.co/16x16/8A4B53/8A4B53.png)|Dark purple |Magenta       |`#8A4B53`|
 |![#A67458](https://placehold.co/16x16/A67458/A67458.png)|Dark brown  |Cyan          |`#A67458`|
-|![#A6B3BF](https://placehold.co/16x16/A6B3BF/A6B3BF.png)|Light blue  |White         |`#A6B3BF`|
+|![#ADADAD](https://placehold.co/16x16/ADADAD/ADADAD.png)|Light grey  |White         |`#ADADAD`|
 |![#5C403B](https://placehold.co/16x16/5C403B/5C403B.png)|Darker brown|Light black   |`#5C403B`|
 |![#DF674C](https://placehold.co/16x16/DF674C/DF674C.png)|Light red   |Bright red    |`#DF674C`|
 |![#8E947D](https://placehold.co/16x16/8E947D/8E947D.png)|Light green |Bright green  |`#8E947D`|

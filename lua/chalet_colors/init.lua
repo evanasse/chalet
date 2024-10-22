@@ -21,7 +21,7 @@ colors.light_purple = "#AA6B73"
 colors.dark_brown = "#A67458"
 colors.light_brown = "#C69478"
 
-colors.light_blue = "#A6B3BF"
+colors.light_grey = "#ADADAD"
 colors.white = "#F2DDBC"
 
 colors.bg = "#1E140D"
@@ -35,7 +35,7 @@ colors.ansi.yellow = colors.dark_yellow
 colors.ansi.blue = colors.dark_orange
 colors.ansi.magenta = colors.dark_purple
 colors.ansi.cyan = colors.dark_brown
-colors.ansi.white = colors.light_blue
+colors.ansi.white = colors.light_grey
 
 colors.ansi.bright_black = colors.darker_brown
 colors.ansi.bright_red = colors.light_red

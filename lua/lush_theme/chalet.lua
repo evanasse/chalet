@@ -58,14 +58,14 @@ local theme = lush(function(injected_functions)
     IncSearch { bg = colors.light_purple, fg = colors.white },  -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
     Substitute { bg = colors.light_purple, fg = colors.white }, -- |:substitute| replacement text highlighting
     LineNr { fg = colors.dark_red },                            -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
-    LineNrAbove { fg = colors.light_brown },                    -- Line number for when the 'relativenumber' option is set, above the cursor line
+    LineNrAbove { fg = colors.dark_brown },                     -- Line number for when the 'relativenumber' option is set, above the cursor line
     LineNrBelow { LineNrAbove },                                -- Line number for when the 'relativenumber' option is set, below the cursor line
     -- CursorLineNr   { }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
     -- CursorLineFold { }, -- Like FoldColumn when 'cursorline' is set for the cursor line
     -- CursorLineSign { }, -- Like SignColumn when 'cursorline' is set for the cursor line
-    MatchParen { gui = "bold" },         -- Character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
-    ModeMsg { fg = colors.light_brown }, -- 'showmode' message (e.g., "-- INSERT -- ")
-    -- MsgArea        { }, -- Area for messages and cmdline
+    MatchParen { gui = "bold" },                                           -- Character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
+    ModeMsg { fg = colors.light_brown },                                   -- 'showmode' message (e.g., "-- INSERT -- ")
+    MsgArea { fg = colors.light_brown },                                   -- Area for messages and cmdline
     -- MsgSeparator   { }, -- Separator for scrolled messages, `msgsep` flag of 'display'
     MoreMsg { fg = colors.light_green },                                   -- |more-prompt|
     NonText { fg = colors.darker_brown },                                  -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
@@ -115,9 +115,9 @@ local theme = lush(function(injected_functions)
 
     Comment { fg = colors.darker_brown },     -- Any comment
 
-    Constant { fg = colors.light_blue },      -- (*) Any constant
+    Constant { fg = colors.light_grey },      -- (*) Any constant
     String { fg = colors.light_green },       --   A string constant: "this is a string"
-    Character { fg = colors.light_blue },     --   A character constant: 'c', '\n'
+    Character { fg = colors.light_grey },     --   A character constant: 'c', '\n'
     Number { fg = colors.dark_purple },       --   A number constant: 234, 0xff
     Boolean { fg = colors.dark_purple },      --   A boolean constant: TRUE, false
     Float { Number },                         --   A floating point constant: 2.3e10
@@ -168,12 +168,13 @@ local theme = lush(function(injected_functions)
     -- LspCodeLens                 { } , -- Used to color the virtual text of the codelens. See |nvim_buf_set_extmark()|.
     -- LspCodeLensSeparator        { } , -- Used to color the seperator between two or more code lens.
     -- LspSignatureActiveParameter { } , -- Used to highlight the active parameter in the signature help. See |vim.lsp.handlers.signature_help()|.
+    LspInfoBorder { FloatBorder },
 
     -- See :h diagnostic-highlights, some groups may not be listed, submit a PR fix to lush-template!
     --
     DiagnosticError { fg = colors.light_red },                                                         -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
     DiagnosticWarn { fg = colors.light_yellow },                                                       -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
-    DiagnosticInfo { fg = colors.light_blue },                                                         -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
+    DiagnosticInfo { fg = colors.light_grey },                                                         -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
     DiagnosticHint { fg = colors.light_purple },                                                       -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
     DiagnosticOk { fg = colors.light_green },                                                          -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
     DiagnosticVirtualTextError { fg = colors.dark_red, gui = "italic" },                               -- Used for "Error" diagnostic virtual text.
@@ -183,7 +184,7 @@ local theme = lush(function(injected_functions)
     DiagnosticVirtualTextOk { fg = colors.dark_green, gui = "italic" },                                -- Used for "Ok" diagnostic virtual text.
     DiagnosticUnderlineError { fg = colors.darker_brown, gui = "underline", sp = colors.light_red },   -- Used to underline "Error" diagnostics.
     DiagnosticUnderlineWarn { fg = colors.darker_brown, gui = "underline", sp = colors.light_yellow }, -- Used to underline "Warn" diagnostics.
-    DiagnosticUnderlineInfo { fg = colors.darker_brown, gui = "underline", sp = colors.light_blue },   -- Used to underline "Info" diagnostics.
+    DiagnosticUnderlineInfo { fg = colors.darker_brown, gui = "underline", sp = colors.light_grey },   -- Used to underline "Info" diagnostics.
     DiagnosticUnderlineHint { fg = colors.darker_brown, gui = "underline", sp = colors.light_purple }, -- Used to underline "Hint" diagnostics.
     DiagnosticUnderlineOk { fg = colors.darker_brown, gui = "underline", sp = colors.light_green },    -- Used to underline "Ok" diagnostics.
     -- DiagnosticFloatingError    { } , -- Used to color "Error" diagnostic messages in diagnostics float. See |vim.diagnostic.open_float()|
@@ -259,6 +260,44 @@ local theme = lush(function(injected_functions)
     -- sym"@preproc"           { }, -- PreProc
     -- sym"@debug"             { }, -- Debug
     -- sym"@tag"               { }, -- Tag
+
+    -- Plugin specific highlight groups
+    -- Telescope
+    TelescopeSelection { bg = colors.black, fg = colors.white, gui = "bold" },
+    -- DevIcon
+    DevIconDefault { fg = colors.light_brown },
+    -- Mason
+    MasonHeader { bg = colors.dark_yellow, fg = colors.black },
+    MasonHeaderSecondary { bg = colors.light_red, fg = colors.black, gui = "bold" },
+    MasonHighlight { fg = colors.dark_red },
+    MasonHighlightBlock { bg = colors.light_red, fg = colors.bg },
+    MasonHighlightBlockBold { bg = colors.light_red, fg = colors.bg, gui = "bold" },
+    MasonHighlightBlockBoldSecondary { bg = colors.dark_yellow, fg = colors.bg, gui = "bold" },
+    MasonHighlightBlockSecondary { bg = colors.dark_yellow, fg = colors.bg },
+    MasonHighlightSecondary { fg = colors.dark_yellow },
+    MasonMuted { fg = colors.dark_brown },
+    MasonMutedBlock { bg = colors.dark_brown, fg = colors.bg },
+    MasonMutedBlockBold { bg = colors.dark_brown, fg = colors.bg, gui = "bold" },
+    -- Noice
+    NoiceCmdlineIcon { fg = colors.light_brown },
+    NoiceCmdlinePopupBorder { fg = colors.light_brown },
+    NoiceCmdlinePopupBorderSearch { fg = colors.light_purple },
+    NoiceCmdlineIconSearch { NoiceCmdlinePopupBorderSearch },
+    NoiceCmdlinePopupBorderLua { fg = colors.light_grey },
+    NoiceCmdlineIconLua { NoiceCmdlinePopupBorderLua },
+    -- Lazy
+    LazyButton { bg = colors.dark_brown, fg = colors.bg },
+    LazyButtonActive { bg = colors.light_red, fg = colors.bg },
+    LazyH1 { LazyButtonActive },
+    LazyLocal { fg = colors.light_brown },
+    LazyProgressDone { fg = colors.light_green },
+    LazyProgressTodo { fg = colors.dark_red },
+    LazyReasonEvent { fg = colors.light_orange },
+    LazyReasonFt { fg = colors.light_yellow },
+    LazyReasonPlugin { fg = colors.dark_orange },
+    LazyReasonSource { fg = colors.dark_yellow },
+    LazySpecial { fg = colors.bg },
+
   }
 end)
 
