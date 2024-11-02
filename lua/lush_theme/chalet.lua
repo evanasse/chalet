@@ -34,7 +34,7 @@ local theme = lush(function(injected_functions)
     --
     -- See :h highlight-groups
     --
-    ColorColumn { bg = colors.darker_brown },                             -- Columns set with 'colorcolumn'
+    ColorColumn { bg = colors.black },                                    -- Columns set with 'colorcolumn'
     Conceal { fg = colors.black },                                        -- Placeholder characters substituted for concealed text (see 'conceallevel')
     Cursor { gui = "inverse" },                                           -- Character under the cursor
     CurSearch { bg = colors.light_orange, fg = colors.black },            -- Highlighting a search pattern under the cursor (see 'hlsearch')
@@ -43,26 +43,26 @@ local theme = lush(function(injected_functions)
     CursorColumn { bg = colors.black },                                   -- Screen-column at the cursor, when 'cursorcolumn' is set.
     CursorLine { bg = colors.black },                                     -- Screen-line at the cursor, when 'cursorline' is set. Low-priority if foreground (ctermfg OR guifg) is not set.
     Directory { fg = colors.dark_brown },                                 -- Directory names (and other special names in listings)
-    DiffAdd { bg = colors.dark_green, fg = colors.white, gui = "bold" },  -- Diff mode: Added line |diff.txt|
+    DiffAdd { bg = colors.light_green, fg = colors.white, gui = "bold" }, -- Diff mode: Added line |diff.txt|
     DiffChange { bg = colors.darker_brown, fg = colors.white },           -- Diff mode: Changed line |diff.txt|
     DiffDelete { bg = colors.dark_red, fg = colors.white, gui = "bold" }, -- Diff mode: Deleted line |diff.txt|
     DiffText { bg = colors.dark_purple, fg = colors.white },              -- Diff mode: Changed text within a changed line |diff.txt|
     EndOfBuffer { fg = colors.darker_brown },                             -- Filler lines (~) after the end of the buffer. By default, this is highlighted like |hl-NonText|.
     -- TermCursor     { }, -- Cursor in a focused terminal
     -- TermCursorNC   { }, -- Cursor in an unfocused terminal
-    ErrorMsg { fg = colors.dark_red },                          -- Error messages on the command line
+    ErrorMsg { fg = colors.dark_red },                                     -- Error messages on the command line
     -- VertSplit      { }, -- Column separating vertically split windows
-    Folded { bg = colors.black, fg = colors.dark_orange },      -- Line used for closed folds
+    Folded { bg = colors.black, fg = colors.dark_orange },                 -- Line used for closed folds
     -- FoldColumn     { }, -- 'foldcolumn'
-    SignColumn { fg = colors.darker_brown },                    -- Column where |signs| are displayed
-    IncSearch { bg = colors.light_purple, fg = colors.white },  -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
-    Substitute { bg = colors.light_purple, fg = colors.white }, -- |:substitute| replacement text highlighting
-    LineNr { fg = colors.dark_red },                            -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
-    LineNrAbove { fg = colors.dark_brown },                     -- Line number for when the 'relativenumber' option is set, above the cursor line
-    LineNrBelow { LineNrAbove },                                -- Line number for when the 'relativenumber' option is set, below the cursor line
-    -- CursorLineNr   { }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
-    -- CursorLineFold { }, -- Like FoldColumn when 'cursorline' is set for the cursor line
-    -- CursorLineSign { }, -- Like SignColumn when 'cursorline' is set for the cursor line
+    SignColumn { fg = colors.darker_brown },                               -- Column where |signs| are displayed
+    IncSearch { bg = colors.light_purple, fg = colors.white },             -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
+    Substitute { bg = colors.light_purple, fg = colors.white },            -- |:substitute| replacement text highlighting
+    LineNr { fg = colors.dark_red },                                       -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
+    LineNrAbove { fg = colors.dark_brown },                                -- Line number for when the 'relativenumber' option is set, above the cursor line
+    LineNrBelow { LineNrAbove },                                           -- Line number for when the 'relativenumber' option is set, below the cursor line
+    CursorLineNr { CursorLine, fg = colors.dark_red },                     -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
+    -- CursorLineFold { FoldColumn },                                         -- Like FoldColumn when 'cursorline' is set for the cursor line
+    CursorLineSign { CursorLine },                                         -- Like SignColumn when 'cursorline' is set for the cursor line
     MatchParen { gui = "bold" },                                           -- Character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
     ModeMsg { fg = colors.light_brown },                                   -- 'showmode' message (e.g., "-- INSERT -- ")
     MsgArea { fg = colors.light_brown },                                   -- Area for messages and cmdline
@@ -83,7 +83,7 @@ local theme = lush(function(injected_functions)
     PmenuSbar { Pmenu },                                                   -- Popup menu: Scrollbar.
     PmenuThumb { bg = colors.light_brown },                                -- Popup menu: Thumb of the scrollbar.
     Question { MoreMsg },                                                  -- |hit-enter| prompt and yes/no questions
-    QuickFixLine { fg = colors.dark_green },                               -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
+    QuickFixLine { gui = "bold" },                                         -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
     Search { bg = colors.dark_purple, fg = colors.white },                 -- Last search pattern highlighting (see 'hlsearch'). Also used for similar items that need to stand out.
     SpecialKey { fg = colors.light_orange },                               -- Unprintable characters: text displayed differently from what it really is. But not 'listchars' whitespace. |hl-Whitespace|
     -- SpellBad       { }, -- Word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise.
@@ -95,12 +95,12 @@ local theme = lush(function(injected_functions)
     -- TabLine        { }, -- Tab pages line, not active tab page label
     -- TabLineFill    { }, -- Tab pages line, where there are no labels
     -- TabLineSel     { }, -- Tab pages line, active tab page label
-    Title { Normal, gui = "bold" },                  -- Titles for output from ":set all", ":autocmd" etc.
-    Visual { bg = colors.dark_red, fg = Normal.bg }, -- Visual mode selection
-    -- VisualNOS      { }, -- Visual mode selection when vim is "Not Owning the Selection".
+    Title { Normal, gui = "bold" },                        -- Titles for output from ":set all", ":autocmd" etc.
+    Visual { bg = colors.dark_red, fg = Normal.bg },       -- Visual mode selection
+    VisualNOS { bg = colors.dark_orange, fg = colors.bg }, -- Visual mode selection when vim is "Not Owning the Selection".
     -- WarningMsg     { }, -- Warning messages
-    Whitespace { fg = colors.black },         -- "nbsp", "space", "tab" and "trail" in 'listchars'
-    Winseparator { fg = colors.light_brown }, -- Separator between window splits. Inherts from |hl-VertSplit| by default, which it will replace eventually.
+    Whitespace { fg = colors.black },                      -- "nbsp", "space", "tab" and "trail" in 'listchars'
+    Winseparator { fg = colors.light_brown },              -- Separator between window splits. Inherts from |hl-VertSplit| by default, which it will replace eventually.
     -- WildMenu       { }, -- Current match in 'wildmenu' completion
     -- WinBar         { }, -- Window bar of current window
     -- WinBarNC       { }, -- Window bar of not-current windows
@@ -116,7 +116,7 @@ local theme = lush(function(injected_functions)
     Comment { fg = colors.darker_brown },     -- Any comment
 
     Constant { fg = colors.light_grey },      -- (*) Any constant
-    String { fg = colors.light_green },       --   A string constant: "this is a string"
+    String { fg = colors.dark_green },        --   A string constant: "this is a string"
     Character { fg = colors.light_grey },     --   A character constant: 'c', '\n'
     Number { fg = colors.dark_purple },       --   A number constant: 234, 0xff
     Boolean { fg = colors.dark_purple },      --   A boolean constant: TRUE, false
@@ -155,6 +155,7 @@ local theme = lush(function(injected_functions)
     -- Ignore         { }, -- Left blank, hidden |hl-Ignore| (NOTE: May be invisible here in template)
     -- Error          { }, -- Any erroneous construct
     Todo { gui = "bold,underline" }, -- Anything that needs extra attention; mostly the keywords TODO FIXME and XXX
+    SnippetTabstop { VisualNOS },
 
     -- These groups are for the native LSP client and diagnostic system. Some
     -- other LSP clients may use these groups, or use their own. Consult your
@@ -162,31 +163,31 @@ local theme = lush(function(injected_functions)
 
     -- See :h lsp-highlight, some groups may not be listed, submit a PR fix to lush-template!
     --
-    -- LspReferenceText            { } , -- Used for highlighting "text" references
-    -- LspReferenceRead            { } , -- Used for highlighting "read" references
-    -- LspReferenceWrite           { } , -- Used for highlighting "write" references
+    LspReferenceText { bg = colors.dark_orange, fg = colors.bg }, -- Used for highlighting "text" references
+    LspReferenceRead { LspReferenceText },                        -- Used for highlighting "read" references
+    LspReferenceWrite { LspReferenceText },                       -- Used for highlighting "write" references
     -- LspCodeLens                 { } , -- Used to color the virtual text of the codelens. See |nvim_buf_set_extmark()|.
     -- LspCodeLensSeparator        { } , -- Used to color the seperator between two or more code lens.
-    -- LspSignatureActiveParameter { } , -- Used to highlight the active parameter in the signature help. See |vim.lsp.handlers.signature_help()|.
+    LspSignatureActiveParameter { LspReferenceText }, -- Used to highlight the active parameter in the signature help. See |vim.lsp.handlers.signature_help()|.
     LspInfoBorder { FloatBorder },
 
     -- See :h diagnostic-highlights, some groups may not be listed, submit a PR fix to lush-template!
     --
-    DiagnosticError { fg = colors.light_red },                                                         -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
-    DiagnosticWarn { fg = colors.light_yellow },                                                       -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
-    DiagnosticInfo { fg = colors.light_grey },                                                         -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
-    DiagnosticHint { fg = colors.light_purple },                                                       -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
-    DiagnosticOk { fg = colors.light_green },                                                          -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
-    DiagnosticVirtualTextError { fg = colors.dark_red, gui = "italic" },                               -- Used for "Error" diagnostic virtual text.
-    DiagnosticVirtualTextWarn { fg = colors.dark_yellow, gui = "italic" },                             -- Used for "Warn" diagnostic virtual text.
-    DiagnosticVirtualTextInfo { DiagnosticInfo, gui = "italic" },                                      -- Used for "Info" diagnostic virtual text.
-    DiagnosticVirtualTextHint { fg = colors.dark_purple, gui = "italic" },                             -- Used for "Hint" diagnostic virtual text.
-    DiagnosticVirtualTextOk { fg = colors.dark_green, gui = "italic" },                                -- Used for "Ok" diagnostic virtual text.
-    DiagnosticUnderlineError { fg = colors.darker_brown, gui = "underline", sp = colors.light_red },   -- Used to underline "Error" diagnostics.
-    DiagnosticUnderlineWarn { fg = colors.darker_brown, gui = "underline", sp = colors.light_yellow }, -- Used to underline "Warn" diagnostics.
-    DiagnosticUnderlineInfo { fg = colors.darker_brown, gui = "underline", sp = colors.light_grey },   -- Used to underline "Info" diagnostics.
-    DiagnosticUnderlineHint { fg = colors.darker_brown, gui = "underline", sp = colors.light_purple }, -- Used to underline "Hint" diagnostics.
-    DiagnosticUnderlineOk { fg = colors.darker_brown, gui = "underline", sp = colors.light_green },    -- Used to underline "Ok" diagnostics.
+    DiagnosticError { fg = colors.light_red },                                                       -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
+    DiagnosticWarn { fg = colors.light_yellow },                                                     -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
+    DiagnosticInfo { fg = colors.light_grey },                                                       -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
+    DiagnosticHint { fg = colors.light_purple },                                                     -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
+    DiagnosticOk { fg = colors.light_green },                                                        -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
+    DiagnosticVirtualTextError { fg = colors.dark_red, gui = "italic" },                             -- Used for "Error" diagnostic virtual text.
+    DiagnosticVirtualTextWarn { fg = colors.dark_yellow, gui = "italic" },                           -- Used for "Warn" diagnostic virtual text.
+    DiagnosticVirtualTextInfo { DiagnosticInfo, gui = "italic" },                                    -- Used for "Info" diagnostic virtual text.
+    DiagnosticVirtualTextHint { fg = colors.dark_purple, gui = "italic" },                           -- Used for "Hint" diagnostic virtual text.
+    DiagnosticVirtualTextOk { fg = colors.dark_green, gui = "italic" },                              -- Used for "Ok" diagnostic virtual text.
+    DiagnosticUnderlineError { fg = colors.dark_brown, gui = "underline", sp = colors.light_red },   -- Used to underline "Error" diagnostics.
+    DiagnosticUnderlineWarn { fg = colors.dark_brown, gui = "underline", sp = colors.light_yellow }, -- Used to underline "Warn" diagnostics.
+    DiagnosticUnderlineInfo { fg = colors.dark_brown, gui = "underline", sp = colors.light_grey },   -- Used to underline "Info" diagnostics.
+    DiagnosticUnderlineHint { fg = colors.dark_brown, gui = "underline", sp = colors.light_purple }, -- Used to underline "Hint" diagnostics.
+    DiagnosticUnderlineOk { fg = colors.dark_brown, gui = "underline", sp = colors.light_green },    -- Used to underline "Ok" diagnostics.
     -- DiagnosticFloatingError    { } , -- Used to color "Error" diagnostic messages in diagnostics float. See |vim.diagnostic.open_float()|
     -- DiagnosticFloatingWarn     { } , -- Used to color "Warn" diagnostic messages in diagnostics float.
     -- DiagnosticFloatingInfo     { } , -- Used to color "Info" diagnostic messages in diagnostics float.
@@ -299,7 +300,6 @@ local theme = lush(function(injected_functions)
     LazyReasonPlugin { fg = colors.dark_orange },
     LazyReasonSource { fg = colors.dark_yellow },
     LazySpecial { fg = colors.bg },
-
   }
 end)
 
