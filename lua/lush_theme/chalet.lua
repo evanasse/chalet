@@ -95,12 +95,12 @@ local theme = lush(function(injected_functions)
     -- TabLine        { }, -- Tab pages line, not active tab page label
     -- TabLineFill    { }, -- Tab pages line, where there are no labels
     -- TabLineSel     { }, -- Tab pages line, active tab page label
-    Title { Normal, gui = "bold" },                        -- Titles for output from ":set all", ":autocmd" etc.
-    Visual { bg = colors.dark_red, fg = Normal.bg },       -- Visual mode selection
-    VisualNOS { bg = colors.dark_orange, fg = colors.bg }, -- Visual mode selection when vim is "Not Owning the Selection".
+    Title { Normal, gui = "bold" },                           -- Titles for output from ":set all", ":autocmd" etc.
+    Visual { bg = colors.dark_brown, fg = colors.black },     -- Visual mode selection
+    VisualNOS { bg = colors.dark_orange, fg = colors.black }, -- Visual mode selection when vim is "Not Owning the Selection".
     -- WarningMsg     { }, -- Warning messages
-    Whitespace { fg = colors.black },                      -- "nbsp", "space", "tab" and "trail" in 'listchars'
-    Winseparator { fg = colors.light_brown },              -- Separator between window splits. Inherts from |hl-VertSplit| by default, which it will replace eventually.
+    Whitespace { fg = colors.black },                         -- "nbsp", "space", "tab" and "trail" in 'listchars'
+    Winseparator { fg = colors.light_brown },                 -- Separator between window splits. Inherts from |hl-VertSplit| by default, which it will replace eventually.
     -- WildMenu       { }, -- Current match in 'wildmenu' completion
     -- WinBar         { }, -- Window bar of current window
     -- WinBarNC       { }, -- Window bar of not-current windows
