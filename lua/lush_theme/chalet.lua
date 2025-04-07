@@ -300,6 +300,8 @@ local theme = lush(function(injected_functions)
     LazyReasonPlugin { fg = colors.dark_orange },
     LazyReasonSource { fg = colors.dark_yellow },
     LazySpecial { fg = colors.bg },
+    -- Minuet
+    MinuetVirtualText { Comment, gui = "italic" },
   }
 end)
 
